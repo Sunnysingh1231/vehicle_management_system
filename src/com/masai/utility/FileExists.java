@@ -5,21 +5,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-import com.masai.entities.Customer;
-import com.masai.entities.Product;
-import com.masai.entities.Transaction;
+import com.masai.entities.Passenger;
+import com.masai.entities.vehicleDet;
 
 public class FileExists {
-	public static Map<Integer, Product> productFile() {
+	public static Map<Integer, vehicleDet> productFile() {
 
-		Map<Integer, Product> pFile = null;
+		Map<Integer, vehicleDet> pFile = null;
 
-		File f = new File("Product.ser");
+		File f = new File("vehicleDet.ser");
 		boolean flag = false;
 		try {
 			if (!f.exists()) {
@@ -37,7 +34,7 @@ public class FileExists {
 			} else {
 
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-				pFile = (Map<Integer, Product>) ois.readObject();
+				pFile = (Map<Integer, vehicleDet>) ois.readObject();
 
 				return pFile;
 
@@ -50,11 +47,11 @@ public class FileExists {
 		return pFile;
 	}
 
-	public static Map<String, Customer> customerFile() {
+	public static Map<String, Passenger> customerFile() {
 
-		Map<String, Customer> cFile = null;
+		Map<String, Passenger> cFile = null;
 
-		File f = new File("Customer.ser");
+		File f = new File("Passenger.ser");
 		boolean flag = false;
 		try {
 			if (!f.exists()) {
@@ -72,7 +69,7 @@ public class FileExists {
 			} else {
 				
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-				cFile = (Map<String, Customer>) ois.readObject();
+				cFile = (Map<String, Passenger>) ois.readObject();
 
 				return cFile;
 
@@ -87,39 +84,4 @@ public class FileExists {
 
 	}
 
-	public static List<Transaction> transactionFile() {
-
-		List<Transaction> tFile = new ArrayList<>();
-
-		File f = new File("Transactions.ser");
-		boolean flag = false;
-		try {
-			if (!f.exists()) {
-				f.createNewFile();
-				flag = true;
-			}
-
-			if (flag) {
-				tFile =  new ArrayList<>();
-				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
-				oos.writeObject(tFile);
-
-				return tFile;
-
-			} else {
-
-				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-				tFile = (List<Transaction>) ois.readObject();
-				return tFile;
-
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage());
-		}
-
-		return tFile;
-
-	}
 }

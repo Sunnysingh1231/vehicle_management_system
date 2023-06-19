@@ -2,20 +2,20 @@ package com.masai.entities;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class PassengersUser implements Serializable{
 	private String name;
 	private int mobNum;
 	private String email;
 	private String password;
 	private double balance;
 
-	public User() {
+	public PassengersUser() {
 		super();
 	}
 	
 	
 
-	public User(String name, int mobNum, String email, String password,double balance) {
+	public PassengersUser(String name, int mobNum, String email, String password,double balance) {
 		super();
 		this.name = name;
 		this.mobNum = mobNum;
